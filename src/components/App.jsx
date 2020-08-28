@@ -7,19 +7,22 @@ function App() {
   });
 
   function handleChange(event) {
-    const newValue = event.target.value;
-    const inputName = event.target.name;
+    //using object destructuring
+    const { name, value } = event.target;
+    // const newValue = event.target.value;
+    // const inputName = event.target.name;
+
     //remembers the previous values even when rerendered
     setFullName((prevValue) => {
-      if (inputName === "fName") {
+      if (name === "fName") {
         return {
-          fName: newValue,
+          fName: value,
           lName: prevValue.lName
         };
-      } else if (inputName === "lName") {
+      } else if (name === "lName") {
         return {
           fName: prevValue.fName,
-          lName: newValue
+          lName: value
         };
       }
     });
